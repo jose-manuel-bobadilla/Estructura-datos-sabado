@@ -97,11 +97,4 @@ lista.mostrar_ordenado()
 
 lista.marcar_completada("Hacer la tarea de Python")
 
-lista.mostrar_ordenado()
-
-
-
-
-        
-    
-
+lista.mostrar_ordenado() 
