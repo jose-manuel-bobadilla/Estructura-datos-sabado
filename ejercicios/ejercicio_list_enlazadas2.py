@@ -8,7 +8,7 @@ class Tarea:
         self.fechaVencimiento = fechaVencimiento
 
 class Node:
-    def __init__(self, tarea: Tarea) -> None:  # 🔹 Ahora almacena una instancia de Tarea
+    def __init__(self, tarea: Tarea) -> None:  # 
         self.tarea = tarea
         self.next: Optional["Node"] = None
 
