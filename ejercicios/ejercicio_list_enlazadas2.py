@@ -17,8 +17,8 @@ class ListaEnlazada:
         self.cabeza: Optional[Node] = None
 
     def agregar(self, descripcion: str, prioridad: int, fechaVencimiento: str) -> None:
-        tarea = Tarea(descripcion, prioridad, fechaVencimiento)  # ✅ Crear una tarea
-        nodo = Node(tarea)  # ✅ Crear un nodo con la tarea
+        tarea = Tarea(descripcion, prioridad, fechaVencimiento) 
+        nodo = Node(tarea)  
 
         if self.cabeza is None:
             self.cabeza = nodo
