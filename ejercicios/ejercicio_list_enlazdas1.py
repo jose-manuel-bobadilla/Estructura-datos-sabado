@@ -39,13 +39,13 @@ class ListaEnlazada:
         nodo = Node(animal)
         if self.cabeza is None:
             self.cabeza = nodo
-            return True  # ✅ Ahora siempre retorna `True` cuando se agrega
+            return True 
 
         nodo_actual = self.cabeza
         while nodo_actual.next is not None:
             nodo_actual = nodo_actual.next
         nodo_actual.next = nodo
-        return True  # ✅ Retorno consistente
+        return True  
 
         
      # esta funcion sirve para confirmar si algun elemento esta repetido   
@@ -55,7 +55,7 @@ class ListaEnlazada:
             if (nodo_actual.dato.get_nombre() == animal.get_nombre() and 
                 nodo_actual.dato.get_tipoAnimal() == animal.get_tipoAnimal()):
                 return True
-            nodo_actual = nodo_actual.next  # ✅ Moverse al siguiente nodo dentro del while
+            nodo_actual = nodo_actual.next  
         return False
 
     def mostrar_iterativo(self) -> None:
@@ -66,14 +66,14 @@ class ListaEnlazada:
 
     def mostrar_recursivo(self, nodo_actual=None) -> None:
         if nodo_actual is None:
-            nodo_actual = self.cabeza  # Iniciar desde la cabeza
-            if nodo_actual is None:  # ✅ Caso base si la lista está vacía
+            nodo_actual = self.cabeza 
+            if nodo_actual is None:  
                 return
         
         print(f"Nombre: {nodo_actual.dato.get_nombre()}, Tipo: {nodo_actual.dato.get_tipoAnimal()}, Edad: {nodo_actual.dato.get_edad()}")
         
-        if nodo_actual.next is not None:  # ✅ Evita llamar con `None`
-            self.mostrar_recursivo(nodo_actual.next)  # Llamada recursiva
+        if nodo_actual.next is not None: 
+            self.mostrar_recursivo(nodo_actual.next)  
         
 
 # Crear la lista enlazada
