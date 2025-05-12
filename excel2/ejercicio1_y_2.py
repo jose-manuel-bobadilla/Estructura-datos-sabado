@@ -1,5 +1,5 @@
 class Nodo:
-    def __init__(self,dato):
+    def __init__(self,dato : int):
         
         self.dato = dato
         self.izquierda = None
