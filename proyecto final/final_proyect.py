@@ -82,19 +82,20 @@ class Lista_enlazada_pacientes:
         print("💾 Datos guardados en Excel.")
 
     def cargar_desde_excel(self, ruta_archivo):
-        if os.path.exists(ruta_archivo):
-            df = pd.read_excel(ruta_archivo)
-            for _, fila in df.iterrows():
-                datos_paciente = {
-                    "CC": str(fila["CC"]).strip(),
-                    "Nombre": str(fila["Nombre"]).strip(),
-                    "Edad": str(fila["Edad"]).strip(),
-                    "Síntomas": str(fila["Síntomas"]).strip()
-                }
-                self.agregar_paciente(datos_paciente)
-            print("📂 Datos cargados desde el archivo.")
-        else:
-            print("⚠️ Archivo Excel no encontrado. Se creará uno nuevo al guardar.")
+     if os.path.exists(ruta_archivo):
+         df = pd.read_excel(ruta_archivo)
+         for _, fila in df.iterrows():
+             datos_paciente = {
+                 "CC": str(fila["CC"]).strip(),
+                 "Nombre": str(fila["Nombre"]).strip(),
+                 "Edad": str(fila["Edad"]).strip(),
+                 "Diagnóstico": str(fila["Diagnóstico"]).strip()
+             }
+             self.agregar_paciente(datos_paciente)
+         print("📂 Datos cargados desde el archivo.")
+     else:
+         print("⚠️ Archivo Excel no encontrado. Se creará uno nuevo al guardar.")
+
 
 # === Árbol de decisiones (Modelo) ===
 def crear_y_entrenar_modelo():
@@ -242,12 +243,3 @@ def menu():
 
 # === Iniciar programa ===
 menu()
-
-
-
-
-
-
-
-
-
