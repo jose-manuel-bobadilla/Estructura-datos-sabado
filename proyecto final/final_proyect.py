@@ -97,7 +97,7 @@ class Lista_enlazada_pacientes:
          print("⚠️ Archivo Excel no encontrado. Se creará uno nuevo al guardar.")
 
 
-# === Árbol de decisiones (Modelo) ===
+#  Árbol de decisiones  
 def crear_y_entrenar_modelo():
     # Datos de entrenamiento ficticios para crear un modelo inicial
     X = [
@@ -138,7 +138,7 @@ def crear_y_entrenar_modelo():
     
     return clf
 
-# === Función para capturar datos del paciente y hacer diagnóstico ===
+#  Función para capturar datos del paciente y hacer diagnóstico 
 def capturar_datos(lista, modelo):
     CC = input("Ingrese la cédula del paciente: ").strip()
     
@@ -193,7 +193,7 @@ def capturar_datos(lista, modelo):
 
     lista.agregar_paciente(datos_paciente)
 
-# === Menú Principal ===
+#  Menú Principal 
 def menu():
     ruta_excel = "/workspaces/Estructura-datos-sabado/proyecto final/Prueba2.xlsx"
     lista = Lista_enlazada_pacientes()
@@ -241,5 +241,5 @@ def menu():
         else:
             print("❗ Opción no válida. Intente de nuevo.")
 
-# === Iniciar programa ===
+#  Iniciar programa 
 menu()
