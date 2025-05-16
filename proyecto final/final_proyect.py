@@ -40,11 +40,11 @@ class Lista_enlazada_pacientes:
         actual = self.cabeza
         while actual:
             if actual.datos["CC"] == cedula:
-                print("✅ Paciente encontrado:")
+                print(" El paciente ya esta agregado:")
                 print(pd.DataFrame([actual.datos]))
                 return actual.datos
             actual = actual.siguiente
-        print("❌ Paciente no encontrado.")
+        print(" Paciente no encontrado, puede registrarlo.")
         return None
 
     def eliminar_paciente_por_cedula(self, cedula):
@@ -59,13 +59,13 @@ class Lista_enlazada_pacientes:
                     anterior.siguiente = actual.siguiente
                 else:
                     self.cabeza = actual.siguiente
-                print(f"🗑️ Paciente con cédula {cedula} eliminado de la lista.")
+                print(f" Paciente con cédula {cedula} fue eliminado de la lista.")
                 break
             anterior = actual
             actual = actual.siguiente
 
         if not encontrado:
-            print(f"❌ Paciente con cédula {cedula} no encontrado.")
+            print(f"El paciente con cédula {cedula} no fue encontrado.")
         return encontrado
 
     def convertir_a_lista(self):
@@ -79,7 +79,7 @@ class Lista_enlazada_pacientes:
     def guardar_en_excel(self, ruta_archivo):
         df = pd.DataFrame(self.convertir_a_lista())
         df.to_excel(ruta_archivo, index=False)
-        print("💾 Datos guardados en Excel.")
+        print("Datos guardados en Excel💾.")
 
     def cargar_desde_excel(self, ruta_archivo):
      if os.path.exists(ruta_archivo):
@@ -92,14 +92,14 @@ class Lista_enlazada_pacientes:
                  "Diagnóstico": str(fila["Diagnóstico"]).strip()
              }
              self.agregar_paciente(datos_paciente)
-         print("📂 Datos cargados desde el archivo.")
+         print("Datos cargados desde el archivo📂.")
      else:
-         print("⚠️ Archivo Excel no encontrado. Se creará uno nuevo al guardar.")
+         print(" Archivo Excel no encontrado. Se creará uno nuevo al guardar.")
 
 
-#  Árbol de decisiones  
+#  Árbol de decisiones junto a su entrenamiento
 def crear_y_entrenar_modelo():
-    # Datos de entrenamiento ficticios para crear un modelo inicial
+    # Datos de entrenamiento 
     X = [
     [1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0],  # Enfermedad Respiratoria Común
     [1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0],  # Tuberculosis
@@ -117,9 +117,9 @@ def crear_y_entrenar_modelo():
     [1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1],  # Enfermedad Respiratoria Común
     [1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0]   # Tuberculosis
     ]
-    y = [ 'Enfermedad Respiratoria Común',  # Paciente con síntomas típicos de enfermedad respiratoria
-    'Tuberculosis',  # Paciente con síntomas típicos de tuberculosis
-    'Cáncer de Pulmón',  # Paciente con síntomas típicos de cáncer de pulmón
+    y = [ 'Enfermedad Respiratoria Común',  
+    'Tuberculosis', 
+    'Cáncer de Pulmón',  
     'Enfermedad Respiratoria Común',
     'Enfermedad Respiratoria Común',
     'Tuberculosis',
@@ -142,15 +142,15 @@ def crear_y_entrenar_modelo():
 def capturar_datos(lista, modelo):
     CC = input("Ingrese la cédula del paciente: ").strip()
     
-    # Evitar cédulas repetidas
+    # Funcion para evitar cédulas repetidas
     if lista.buscar_paciente_por_cedula(CC):
-        print("⚠️ Ya existe un paciente con esa cédula.")
+        print("Ya existe un paciente con esa cédula.")
         return
 
     nombre = input("Ingrese el nombre del paciente: ").strip()
     edad = input("Ingrese la edad del paciente: ").strip()
 
-    # Captura de síntomas
+    # Datos de síntomas para el arbol de decisiones
     tos = int(input("¿Tienes tos persistente o recurrente? (1=Sí, 0=No): "))
     fiebre = int(input("¿Has tenido fiebre recientemente? (1=Sí, 0=No): "))
     dificultad_respirar = int(input("¿Sientes dificultad para respirar o falta de aire al realizar actividades cotidianas? (1=Sí, 0=No): "))
@@ -239,7 +239,7 @@ def menu():
             break
 
         else:
-            print("❗ Opción no válida. Intente de nuevo.")
+            print("Opción no válida. Intente de nuevo.")
 
 #  Iniciar programa 
 menu()
